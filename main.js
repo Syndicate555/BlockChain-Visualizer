@@ -36,6 +36,21 @@ class Blockchain {
     newBlock.hash = newBlock.calculateHash();
     this.chain.push(newBlock);
   }
+
+  isChainValid() {
+    for (let i = 1; i < this.chain.length; i++) {
+      const currentBlock = this.chain[i];
+      const previousBlock = this.chain[i - 1];
+      if (currentBlock.hash !== currentBlock.calculateHash()) {
+        return false;
+      }
+      if (currentBlock.previousHash !== previousBlock.hash) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }
 
 let syndiCoin = new Blockchain();
@@ -44,3 +59,5 @@ syndiCoin.addBlock(newBlock(2, "10/07/2018", { amount: 40 }));
 syndiCoin.addBlock(newBlock(3, "10/07/2018", { amount: 34 }));
 syndiCoin.addBlock(newBlock(4, "10/07/2018", { amount: 23 }));
 syndiCoin.addBlock(newBlock(5, "10/07/2018", { amount: 232 }));
+
+console.log(JSON.stringify(syndiCoin, null, 4));
