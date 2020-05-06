@@ -31,7 +31,8 @@ class Block {
 
 class Blockchain {
   constructor() {
-    this.chain = [];
+    this.chain = [this.createGenesisBlock()];
+    this.difficulty = 2;
   }
 
   createGenesisBlock() {
@@ -44,7 +45,7 @@ class Blockchain {
 
   addBlock(newBlock) {
     newBlock.previousHash = this.getLatestBlock().hash;
-    newBlock.hash = newBlock.calculateHash();
+    newBlock.mineBlock();
     this.chain.push(newBlock);
   }
 
