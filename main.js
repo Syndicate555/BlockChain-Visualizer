@@ -37,3 +37,10 @@ class Blockchain {
     this.chain.push(newBlock);
   }
 }
+
+let syndiCoin = new Blockchain();
+syndiCoin.addBlock(newBlock(1, "10/07/2018", { amount: 4 }));
+syndiCoin.addBlock(newBlock(2, "10/07/2018", { amount: 40 }));
+syndiCoin.addBlock(newBlock(3, "10/07/2018", { amount: 34 }));
+syndiCoin.addBlock(newBlock(4, "10/07/2018", { amount: 23 }));
+syndiCoin.addBlock(newBlock(5, "10/07/2018", { amount: 232 }));
