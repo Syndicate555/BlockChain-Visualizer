@@ -9,6 +9,12 @@ class Transaction {
   calculateHash() {
     return SHA256(this.fromAddress + this.toAddress + this.amount).toString();
   }
+
+  signTransaction(signingKey) {
+    const hastTx = this.calculateHash();
+    const sig = signingKey.sign(hastTx, "base64");
+    this.signature = sig.toDER("hex");
+  }
 }
 class Block {
   constructor(timestamp, transactions, previousHash = "") {
