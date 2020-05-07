@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Syndicate555/BlockChain-Visualizer#readme",
   "dependencies": {
-    "crypto-js": "^4.0.0"
+    "crypto-js": "^4.0.0",
+    "elliptic": "^6.5.2"
   }
 }
