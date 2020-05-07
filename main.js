@@ -102,9 +102,13 @@ class Blockchain {
 
 let syndiCoin = new Blockchain();
 
-console.log("Mining block 1......");
-syndiCoin.addBlock(new Block(1, "10/07/2018", { amount: 4 }));
-syndiCoin.addBlock(new Block(2, "10/07/2018", { amount: 40 }));
-syndiCoin.addBlock(new Block(3, "10/07/2018", { amount: 34 }));
-syndiCoin.addBlock(new Block(4, "10/07/2018", { amount: 23 }));
-syndiCoin.addBlock(new Block(5, "10/07/2018", { amount: 232 }));
+syndiCoin.createTransaction(new Transaction("address1", "address2", 100));
+syndiCoin.createTransaction(new Transaction("address1", "address2", 100));
+syndiCoin.createTransaction(new Transaction("address1", "address2", 100));
+
+console.log("\n Starting the miner.......");
+syndiCoin.mindPendingTransactions("Saffats-address");
+console.log(
+  "\nBalance of Saffat is: ",
+  syndiCoin.getBalanceOfAddress("Saffats-address")
+);
