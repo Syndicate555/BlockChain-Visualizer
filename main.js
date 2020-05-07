@@ -1,6 +1,6 @@
 const SHA256 = require("crypto-js/sha256");
 class Block {
-  constructor(index, timstamp, data, previousHash = "") {
+  constructor(index, timestamp, data, previousHash = "") {
     this.index = index;
     this.timestamp = timestamp;
     this.data = data;
@@ -26,6 +26,7 @@ class Block {
       this.nonce++;
       this.hash = this.calculateHash();
     }
+    console.log("Block mined: " + this.hash);
   }
 }
 
@@ -66,10 +67,10 @@ class Blockchain {
 }
 
 let syndiCoin = new Blockchain();
+
+console.log("Mining block 1......");
 syndiCoin.addBlock(newBlock(1, "10/07/2018", { amount: 4 }));
 syndiCoin.addBlock(newBlock(2, "10/07/2018", { amount: 40 }));
 syndiCoin.addBlock(newBlock(3, "10/07/2018", { amount: 34 }));
 syndiCoin.addBlock(newBlock(4, "10/07/2018", { amount: 23 }));
 syndiCoin.addBlock(newBlock(5, "10/07/2018", { amount: 232 }));
-
-console.log(JSON.stringify(syndiCoin, null, 4));
