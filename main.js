@@ -1,4 +1,11 @@
 const SHA256 = require("crypto-js/sha256");
+class Transaction {
+  constructor(fromAddress, toAddress, amount) {
+    this.fromAddress = fromAddress;
+    this.toAddress = toAddress;
+    this.fromAddress = fromAddress;
+  }
+}
 class Block {
   constructor(timestamp, transactions, previousHash = "") {
     this.timestamp = timestamp;
@@ -33,10 +40,12 @@ class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
     this.difficulty = 2;
+    this.pendingTransactions = [];
+    this.miningReward = 100;
   }
 
   createGenesisBlock() {
-    return new Block(0, "01/01/2018", "Genesis Block", "0");
+    return new Block("01/01/2018", "Genesis Block", "0");
   }
 
   getLatestBlock() {
