@@ -5,6 +5,10 @@ class Transaction {
     this.toAddress = toAddress;
     this.amount = amount;
   }
+
+  calculateHash() {
+    return SHA256(this.fromAddress + this.toAddress + this.amount).toString();
+  }
 }
 class Block {
   constructor(timestamp, transactions, previousHash = "") {
