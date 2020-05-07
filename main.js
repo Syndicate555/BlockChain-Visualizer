@@ -71,7 +71,7 @@ class Blockchain {
   getBalanceOfAddress(address) {
     let balance = 0;
     for (const block of this.chain) {
-      for (const trans of block.transacions) {
+      for (const trans of block.transactions) {
         if (trans.fromAddress === address) {
           balance -= trans.amount;
         }
@@ -103,11 +103,18 @@ class Blockchain {
 let syndiCoin = new Blockchain();
 
 syndiCoin.createTransaction(new Transaction("address1", "address2", 100));
-syndiCoin.createTransaction(new Transaction("address1", "address2", 100));
-syndiCoin.createTransaction(new Transaction("address1", "address2", 100));
+syndiCoin.createTransaction(new Transaction("address2", "address1", 50));
 
 console.log("\n Starting the miner.......");
 syndiCoin.mindPendingTransactions("Saffats-address");
+console.log(
+  "\nBalance of Saffat is: ",
+  syndiCoin.getBalanceOfAddress("Saffats-address")
+);
+
+console.log("\n Starting the miner.......");
+syndiCoin.mindPendingTransactions("Saffats-address");
+
 console.log(
   "\nBalance of Saffat is: ",
   syndiCoin.getBalanceOfAddress("Saffats-address")
