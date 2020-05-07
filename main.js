@@ -81,6 +81,7 @@ class Blockchain {
         }
       }
     }
+    return balance;
   }
 
   isChainValid() {
