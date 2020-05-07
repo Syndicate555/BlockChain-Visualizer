@@ -18,6 +18,13 @@ class Transaction {
     const sig = signingKey.sign(hastTx, "base64");
     this.signature = sig.toDER("hex");
   }
+
+  isValid() {
+    if (this.fromAddress === null) return true;
+    if (!this.signature || this.signature.length === 0) {
+      throw new Error("No signature is in this transaction");
+    }
+  }
 }
 class Block {
   constructor(timestamp, transactions, previousHash = "") {
