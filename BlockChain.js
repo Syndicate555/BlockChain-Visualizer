@@ -99,14 +99,24 @@ class Blockchain {
 
   addTransaction(transaction) {
     if (!transaction.fromAddress || !transaction.toAddress) {
-      throw new Error("Transaction must include from and to address");
-    }
-
-    if (!transaction.isValid()) {
-      throw new Error("Cannot add invalid transaction to chain");
-    }
-    this.pendingTransactions.push(transaction);
-  }
+        throw new Error('Transaction must include from and to address');
+      }
+  
+      // Verify the transactiion
+      if (!transaction.isValid()) {
+        throw new Error('Cannot add invalid transaction to chain');
+      }
+      
+      if (transaction.amount <= 0) {
+        throw new Error('Transaction amount should be higher than 0');
+      }
+      
+      // Making sure that the amount sent is not greater than existing balance
+      if (this.getBalanceOfAddress(transaction.fromAddress) < transaction.amount) {
+        throw new Error('Not enough balance');
+      }
+  
+      this.pendingTransactions.push(transaction);
 
   getBalanceOfAddress(address) {
     let balance = 0;

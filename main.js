@@ -15,5 +15,5 @@ console.log("\n Starting the miner.......");
 syndiCoin.mindPendingTransactions(myWalletAddress);
 console.log(
   "\nBalance of Saffat is: ",
-  syndiCoin.getBalanceOfAddress("saffats-address")
+  syndiCoin.getBalanceOfAddress(myWalletAddress)
 );
