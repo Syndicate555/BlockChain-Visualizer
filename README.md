@@ -1,2 +1,2 @@
 # BlockChain-Visualizer
-A simple Javascript implementation of the functionality of a blockchain. 
+A Simple Javascript implementation of the functionality of a blockchain. 
